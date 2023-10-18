@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api/axios";
 import { Header } from "../../components/Header";
 import { Card } from "../../components/Card";
-import { ContainerHome } from "./styles";
+import { ContainerHome, ContentHome } from "./styles";
 
 export function Home() {
   const [weatherOfCity, setweatherOfCity] = useState([]);
@@ -23,5 +23,18 @@ export function Home() {
 
   console.log(weatherOfCity);
 
-  return <ContainerHome><Header/><Card/></ContainerHome>;
+  return (
+    <ContainerHome>
+      <Header />
+      <Card />
+      <ContentHome>
+        <header>
+          <section>
+            <input type="text" placeholder="Informe a cidade" />
+            <button>Buscar</button>
+          </section>
+        </header>
+      </ContentHome>
+    </ContainerHome>
+  );
 }

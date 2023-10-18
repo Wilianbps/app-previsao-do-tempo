@@ -10,7 +10,7 @@ export const Container = styled.div`
   border-radius: 10px;
   color: ${(props) => props.theme["base-title"]};
 
-  header {
+ > header {
     color: ${(props) => props.theme.white};
     display: flex;
     align-items: center;
@@ -28,7 +28,7 @@ export const Container = styled.div`
     }
   }
 
-  main {
+ > main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +44,7 @@ export const Container = styled.div`
     }
   }
 
-  footer {
+  > footer {
     display: flex;
     flex-direction: column;
     gap: 2rem; 
@@ -69,7 +69,7 @@ export const Container = styled.div`
       }
     }
 
-    button {
+    > button {
     margin: 0 auto;
     font-size: 0.875rem;
     color: #fff;
