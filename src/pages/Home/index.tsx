@@ -1,39 +1,39 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { api } from "../../services/api/axios";
 import { Header } from "../../components/Header";
 import { Card } from "../../components/Card";
-import { ContainerHome, ContentHome } from "./styles";
+import { ContainerHome, ContentHome, SearchFormContainer } from "./styles";
 
 export function Home() {
-  const [weatherOfCity, setweatherOfCity] = useState([]);
+  const [infoWeatherOfCity, setinfoWeatherOfCity] = useState([]);
+  const [city, setCity] = useState("");
 
   const apyKey = import.meta.env.VITE_API_KEY;
 
-  async function fetchWeatherByCity() {
+  async function handlefetchWeatherByCity(e: FormEvent) {
+    e.preventDefault();
     const response = await api.get("", {
-      params: { q: `franco da rocha`, appid: apyKey, lang: "pt_br" },
+      params: { q: `${city}`, appid: apyKey, lang: "pt_br" },
     });
 
-    setweatherOfCity(response.data);
+    setinfoWeatherOfCity(response.data);
+    setCity("")
   }
-
-  useEffect(() => {
-    fetchWeatherByCity();
-  }, []);
-
-  console.log(weatherOfCity);
 
   return (
     <ContainerHome>
       <Header />
       <Card />
       <ContentHome>
-        <header>
-          <section>
-            <input type="text" placeholder="Informe a cidade" />
-            <button>Buscar</button>
-          </section>
-        </header>
+        <SearchFormContainer onSubmit={handlefetchWeatherByCity}>
+          <input
+            type="text"
+            placeholder="Informe a cidade"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <button type="submit">Buscar</button>
+        </SearchFormContainer>
       </ContentHome>
     </ContainerHome>
   );
