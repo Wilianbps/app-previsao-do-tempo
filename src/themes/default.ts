@@ -19,7 +19,11 @@ export const defaultTheme = {
   'red-700': '#7A1921',
 
 
-  blue: "#3294F8",
+  purple : '#7629CC',
+  "purple-light":'#8e5ee8',
+  "orange": '#E39144',
+
+
   "base-title": "#e7edf4",
   "base-subtitle": "#c4d4e3",
   "base-text": "#afc2d4",
@@ -30,6 +34,6 @@ export const defaultTheme = {
   "base-post": "#112131",
 
   "base-profile": "#0b1b2b",
-  "base-background": "#071422",
+  "base-background": "#f8f2f5",
   "base-input": "#040f1a",
 } as const
